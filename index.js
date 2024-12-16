@@ -1,13 +1,15 @@
 const express = require('express');
 const fs = require('fs');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 // Use body-parser middleware
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.use(express.urlencoded())
+// Serve static files from the 'views' directory
+app.use(express.static(path.join(__dirname, 'views')));
 
 // fetching products for selling
 app.get('/fetch_products', (req, res)=>{
@@ -317,9 +319,6 @@ app.post('/delete_from_complaints', (req, res)=>{
 
 
 
-// static middleware
-app.use(express.static('views'));
-
 // root router
 app.get('*', (req, res)=>{
     res.sendFile(__dirname + '/views/index.html');
@@ -329,3 +328,6 @@ app.get('*', (req, res)=>{
 app.listen('3000', ()=>{
     console.log('[+] server is running on port 3000...');
 })
+
+// Make sure you're exporting the app for Vercel
+module.exports = app;
