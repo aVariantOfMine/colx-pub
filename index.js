@@ -42,7 +42,7 @@ app.get('/get_lost_found', (req, res)=>{
     console.log('[+] lost and found: ', data)
     console.log('[+]',typeof(data));
     if(data==''){
-        fs.writeFileSync(__dirname + '/views/lost_found.json', '{"lost_and_found":[]}')
+        fs.writeFileSync(__dirname + '/views/lost_found.json', '{"lost_and_found":[]}');
         data = '{"lost_and_found":[]}'
     }
 
@@ -172,16 +172,16 @@ app.post('/post_product', (req, res)=>{
     try{
         db_json = JSON.parse(db);
         console.log(db_json)
-        if(db_json=={}){
-            db_json["buy"] = []
+        if(db_json==[]){
+            db_json = []
         }
     }
     catch{
-        db_json = {};
-        db_json["buy"] = []
+        db_json = [];
+        // db_json["buy"] = []
     }
 
-    db_json["buy"].push({
+    db_json.push({
         "seller": name,
         "seller_contact": contact,
         "price": price,
