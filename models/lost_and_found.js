@@ -3,21 +3,12 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 
-const db_link = process.env.DB_LINK
-mongoose.connect(db_link)
-.then((db)=>{
-    console.log('[+] lost and found db connected')
-})
-.catch((err)=>{
-    console.error('[+]', err)
-})
-
 const lostAndFoundSchema = new mongoose.Schema({
-    itemName: {
+    title: {
         type: String,
         required: true
     },
-    description: {
+    desc: {
         type: String,
         required: true
     },
@@ -26,22 +17,20 @@ const lostAndFoundSchema = new mongoose.Schema({
         enum: ['lost', 'found'],
         required: true
     },
-    location: {
+    author: {
         type: String,
         required: true
     },
-    contact: {
+    contactMe: {
         type: String,
-        required: true
-    },
-    date: {
-        type: Date,
-        required: true
+        required: true,
+        match: [/^\d{10}$/, 'Invalid contact number']
     },
     createdAt: {
         type: Date,
         default: Date.now
     }
 })
+
 
 module.exports = mongoose.model('LostAndFound', lostAndFoundSchema)

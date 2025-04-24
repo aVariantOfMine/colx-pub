@@ -1,0 +1,13 @@
+## Routes
+- LOST AND FOUND
+    - GET /get_lost_found
+    - POST /add_to_lost_found
+    - POST /post_found
+    - POST /post_lost
+    - POST /delete_from_lost_found
+- OLX
+    - GET /fetch_products
+    - POST /post_product
+    - [ ] POST /delete_product
+    - [ ] POST /set_sold -> set status of product to sold
+- GET * -> send index.html

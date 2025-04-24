@@ -3,15 +3,6 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 
-const db_link = process.env.DB_LINK
-mongoose.connect(db_link)
-.then((db)=>{
-    console.log('[+] olx db connected')
-})
-.catch((err)=>{
-    console.error('[+]', err)
-})
-
 const olxSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -22,17 +13,18 @@ const olxSchema = new mongoose.Schema({
         required: true
     },
     price: {
-        type: Number,
+        type: String,
         required: true
-    },
+    },    
     seller: {
         type: String,
         required: true
     },
     seller_contact: {
         type: String,
-        required: true
-    },
+        required: true,
+        match: [/^\d{10}$/, 'Invalid contact number']
+    },    
     // category: {
     //     type: String,
     //     required: true
