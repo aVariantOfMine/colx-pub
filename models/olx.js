@@ -24,7 +24,12 @@ const olxSchema = new mongoose.Schema({
         type: String,
         required: true,
         match: [/^\d{10}$/, 'Invalid contact number']
-    },    
+    },
+    isSold: {
+        type: Boolean,
+        require: 'true',
+        default: false
+    },
     // category: {
     //     type: String,
     //     required: true
