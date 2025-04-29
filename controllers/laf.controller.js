@@ -78,15 +78,15 @@ const post_lost = async (req, res) => {
 }
 
 const get_lost_and_found_by_id = (req, res) => {
-
+    // get lost_and_found item by id from /:id
 }
 
 const delete_from_lost_and_found_by_id = (req, res) => {
-
+    // delete a perticular lost_and_found item by id from /:id
 }
 
 const update_lost_and_found = (req, res) => {
-
+    // update a perticular lost_and_found item by if from /:id
 }
 
 module.exports = {

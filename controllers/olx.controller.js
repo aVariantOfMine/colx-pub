@@ -27,19 +27,19 @@ const post_product = async (req, res) => {
 }
 
 const set_sold = (req, res) => {
-
+    // set boolean isSold field of a perticular product in the product model to true
 }
 
 const get_product = (req, res) => {
-
+    // get the details of a perticular product from product model using /:id
 }
 
 const delete_product = (req, res) => {
-
+    // delete a product from product model using /:id
 }
 
 const update_product = (req, res) => {
-
+    // update a product using /:id and details given in req.body
 }
 
 module.exports = {
